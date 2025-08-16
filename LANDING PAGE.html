@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeapXcorp – Sportswear Manufacturer</title>
+
+<!-- Font Awesome for Social Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 10px 50px 20px;
+        background-color: #cfcfcf;
+        color: #000;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+        background-color: black;
+        border-radius: 36px;
+        overflow: auto;
+    }
+    .navbar ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .navbar li {
+        float: left;
+        margin: 13px 20px;
+    }
+    .navbar li a {
+        padding: 13px 20px;
+        color: white;
+        text-decoration: none;
+    }
+    .navbar li a:hover {
+        color: red;
+    }
+    .search {
+        float: right;
+        margin: 8px 20px 0 0;
+    }
+    .navbar input {
+        border: 2px solid black;
+        border-radius: 14px;
+        padding: 8px 13px;
+    }
+
+    /* Page Heading */
+    .page-heading {
+        text-align: center;
+        margin: 30px 0;
+        color: #000;
+    }
+    .page-heading h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+    .page-heading p {
+        font-size: 1.2em;
+        opacity: 0.8;
+    }
+
+    /* Section Heading Between Slideshows */
+    .section-heading {
+        text-align: center;
+        margin: 40px 0 20px;
+        font-size: 2em;
+        font-weight: bold;
+        color: #000;
+    }
+
+    /* Top Continuous Slider */
+    .top-slider {
+        overflow: hidden;
+        background: #000;
+        padding: 20px 0;
+        border-radius: 10px;
+    }
+    .top-slide-track {
+        display: flex;
+        width: calc(370px * 16);
+        animation: scrollTop 20s linear infinite;
+    }
+    .top-slide {
+        width: 370px;
+        flex-shrink: 0;
+        padding: 0 10px;
+    }
+    .top-slide img {
+        width: 100%;
+        border-radius: 15px;
+    }
+    @keyframes scrollTop {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* Header + Left Slideshow Section */
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    /* Left Slideshow */
+    .slider {
+        max-width: 60%;
+        overflow: hidden;
+        border-radius: 15px;
+    }
+    .slide-track {
+        display: flex;
+        width: max-content;
+        animation: scroll 15s linear infinite;
+    }
+    .slide {
+        flex: 0 0 auto;
+        padding: 0 10px;
+    }
+    .slide img {
+        width: 300px;
+        height: 200px;
+        border-radius: 10px;
+    }
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* Right Text Section */
+    .text-section {
+        max-width: 35%;
+        background-color: #fff;
+        color: #000;
+        padding: 30px;
+        border-radius: 15px;
+    }
+    .text-section h1, .text-section h2, .text-section p {
+        margin: 10px 0;
+    }
+    .btn {
+        display: inline-block;
+        background: #000;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    /* Contact Section */
+    #contact {
+        padding: 40px 50px 20px;
+        background: #000;
+        color: white;
+        margin-top: 40px;
+    }
+    form input, form textarea {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    button {
+        background: #000;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    button:hover {
+        background: #444;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #000;
+        color: #fff;
+        padding: 30px 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+    .footer-icons {
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .footer-icons a {
+        color: #fff;
+        font-size: 2em;
+        transition: transform 0.3s, color 0.3s;
+    }
+    .footer-icons a:hover {
+        color: #1da1f2;
+        transform: scale(1.2);
+    }
+    .footer-nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
+        padding: 0;
+    }
+    .footer-nav ul li a {
+        text-decoration: none;
+        color: #fff;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    .footer-nav ul li a:hover {
+        opacity: 1;
+    }
+
+    /* Responsive */
+    @media(max-width: 900px){
+        .header-container {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .slider, .text-section {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">       
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <div class="search">
+                <input type="text" placeholder="Search this website">
+            </div>
+        </ul>
+    </nav>
+
+    <!-- Main Heading -->
+    <div class="page-heading">
+        <h1>Welcome to LeapXcorp – Quality Sportswear Manufacturer</h1>
+        <p>Explore our latest products and collections below</p>
+    </div>
+
+    <!-- Top Continuous Slider -->
+    <div class="top-slider">
+        <div class="top-slide-track">
+            <div class="top-slide"><img src="h.jpg" alt=""></div>
+            <div class="top-slide"><img src="h1.jpg" alt=""></div>
+            <div class="top-slide"><img src="h2.jpg" alt=""></div>
+            <div class="top-slide"><img src="h3.jpg" alt=""></div>
+            <div class="top-slide"><img src="h4.jpg" alt=""></div>
+            <div class="top-slide"><img src="h5.jpg" alt=""></div>
+            <div class="top-slide"><img src="h6.jpg" alt=""></div>
+            <div class="top-slide"><img src="h.jpg" alt=""></div>
+            <!-- duplicate for smooth loop -->
+            <div class="top-slide"><img src="h.jpg" alt=""></div>
+            <div class="top-slide"><img src="h1.jpg" alt=""></div>
+            <div class="top-slide"><img src="h2.jpg" alt=""></div>
+            <div class="top-slide"><img src="h3.jpg" alt=""></div>
+            <div class="top-slide"><img src="h4.jpg" alt=""></div>
+            <div class="top-slide"><img src="h5.jpg" alt=""></div>
+            <div class="top-slide"><img src="h6.jpg" alt=""></div>
+            <div class="top-slide"><img src="h.jpg" alt=""></div>
+        </div>
+    </div>
+
+    <!-- Heading between slideshows -->
+    <div class="section-heading">Our Featured Sportswear Collection</div>
+
+    <!-- Header + Left Slideshow Section -->
+    <div class="header-container">
+        <!-- Left Slideshow -->
+        <div class="slider">
+            <div class="slide-track">
+                
+                <div class="slide"><img src="h12.jpg" alt="Sportswear 1"></div>
+                
+                <div class="slide"><img src="h14.jpg" alt="Sportswear 2"></div>
+                <div class="slide"><img src="h15.jpg" alt="Sportswear 3"></div>
+                <div class="slide"><img src="h16.jpg" alt="Sportswear 4"></div>
+                <div class="slide"><img src="h17.jpg" alt="Sportswear 5"></div>
+                <!-- duplicate for smooth loop -->
+              
+                <div class="slide"><img src="h12.jpg" alt="Sportswear 1"></div>
+               
+                <div class="slide"><img src="h14.jpg" alt="Sportswear 2"></div>
+                <div class="slide"><img src="h15.jpg" alt="Sportswear 3"></div>
+                <div class="slide"><img src="h16.jpg" alt="Sportswear 4"></div>
+                <div class="slide"><img src="h17.jpg" alt="Sportswear 5"></div>
+            </div>
+        </div>
+
+        <!-- Right Text Section -->
+        <div class="text-section">
+            <h1>Manufacturer and Exporter</h1>
+            <h2>of All Kinds of Sportswear</h2>
+            <p>DM us for quotations & queries</p>
+            <a href="#contact" class="btn">Contact Us</a>
+        </div>
+    </div>
+   <!-- Main Section Heading -->
+<div class="main-heading">
+    <h1>Welcome to LeapXcorp – OUR EXPERTIES ARE :</h1>
+</div>
+
+<!-- Three Sub-Sections -->
+<div class="sub-sections">
+    <div class="sub-section">
+        <h2>SUBLIMATION</h2>
+        <p>Sublimation is a printing process where dye is transferred onto materials like fabric or mugs using heat, creating vibrant, long-lasting designs.
+</p>
+    </div>
+    <div class="sub-section">
+        <h2>SCREEN PRINTING</h2>
+        <p>Screen printing is a technique where ink is pushed through a mesh stencil onto a surface to create bold and durable designs.
+</p>
+    </div>
+    <div class="sub-section">
+        <h2>EMBROIDERY</h2>
+        <p>Embroidery is the art of decorating fabric with needle and thread to create intricate patterns and designs.
+</p>
+    </div>
+</div>
+
+ 
+
+
+
+
+    <!-- Contact Section -->
+<section id="contact">
+    <!-- Editable Heading -->
+    <h2 contenteditable="true" style="text-align:center; margin-bottom:20px;">Contact Us</h2>
+
+    <form id="contactForm" style="display:flex; flex-direction:column; align-items:center; gap:15px;">
+        <!-- Editable input placeholders -->
+        <input type="text" id="name" placeholder="Your Name" required style="width:80%; max-width:500px; padding:10px; border-radius:8px; border:1px solid #ccc;" contenteditable="true">
+        <input type="email" id="email" placeholder="Your Email" required style="width:100%; max-width:500px; padding:10px; border-radius:8px; border:1px solid #ccc;" contenteditable="true">
+        <textarea id="message" placeholder="Your Message" required style="width:100%; max-width:500px; height:120px; padding:10px; border-radius:8px; border:1px solid #ccc;" contenteditable="true"></textarea>
+
+        <!-- Editable Button Text -->
+        <button type="submit" style="width:150px; background:#000000; color:#fff; border:none; padding:10px; border-radius:8px; cursor:pointer;" contenteditable="true">Send</button>
+    </form>
+</section>
+
+<script>
+    // Contact form submit
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        alert(`Thank you, ${name}! We’ll contact you at ${email}.`);
+        this.reset();
+    });
+</script>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>© 2025 LeapXcorp</p>
+    </footer>
+
+<script>
+    // Contact form submit
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        alert(`Thank you, ${name}! We’ll contact you at ${email}.`);
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
